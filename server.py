@@ -24,7 +24,7 @@ def upload_file():
                 dirSize = sum(os.path.getsize(f) for f in os.listdir('.') if os.path.isfile(f))
                 if dirSize < 50 * 1000 * 1000 * 1000:
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    return f"Your download link is: <a href='https://filesrv.andreyap.com/storage/{filename}'>https://filesrv.andreyap.com/storage/{filename}</a>"
+                    return render_template("link.html", content=filename)
                 else:
                     return redirect(request.url)
         except:

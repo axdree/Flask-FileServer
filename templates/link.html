@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.css') }}">
+
+<h1>Download Link</h1>
+
+<div class="container">
+    <input id="text_input" class="text_input" type="text" value="https://filesrv.andreyap.com/storage/{{content}}" readonly>
+    <button class="btn" id="btn"><img src="{{ url_for('static', filename='img/clipboard-outline.svg') }}"></button>
+</div>
+
+<script src="{{ url_for('static', filename='js/linkscript.js') }}"></script>
+</html>

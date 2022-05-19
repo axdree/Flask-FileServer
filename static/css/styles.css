@@ -60,14 +60,14 @@
 body {
 	font-family: "Open sans", "Segoe UI", "Segoe WP", Helvetica, Arial, sans-serif;
 	color: #7f8c9a;
-	background: #fcfdfd;
+	background-color: rgb(20, 19, 19);
 }
 h1,
 h2 {
 	margin-bottom: 5px;
 	font-weight: normal;
 	text-align: center;
-	color: #aaa;
+	color: rgb(238, 238, 238);
 }
 h2 {
 	margin: 5px 0 2em;
@@ -85,7 +85,7 @@ h2 + P {
 	margin-top: 4em;
 	font-size: 0.9em;
 	text-align: center;
-	color: #aaa;
+	color: rgb(238, 238, 238);
 }
 .copy {
 	margin-top: 2em;
