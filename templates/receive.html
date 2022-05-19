@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.css') }}">
+<head><title>Receive Files!</title></head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.min.css') }}">
 
-<h1>Enter Code Here:</h1>
+<h1>File Sharing Platform</h1>
+<h2>Enter Code Here:</h2>
 
-<div class="container">
-    <form method="post" enctype="text/plain">
-        <input type="text" id="fileCode" maxlength="8" placeholder="Enter Code Here..." name="fileCode">
-        <input class="upload-code" type="submit" value="Upload">
-    </form>
-</div>
+<form method="post" enctype="text/plain">
+    <input type="text" id="fileCode" maxlength="8" placeholder="Enter Code Here..." name="fileCode"><br>
+    <input class="downloadBtn" type="submit" value="Submit">
+</form>
 
+<p class="txtcenter">Please do not abuse!! :(</p>
+<p class="txtcenter copy">Created by <a href="https://andreyap.com" target="_blank">Andre</a><br /><a href="mailto:andre@andreyap.com">Contact Me</a><br>Files will be hosted for 3 days before being automatically deleted.</p>
 <script src="{{ url_for('static', filename='js/linkscript.js') }}"></script>
 </html>

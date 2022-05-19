@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.css') }}">
+<head><title>Send Files!</title></head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.min.css') }}">
 
-<h1>Download Link</h1>
+<h1>File Sharing Platform</h1>
+<h2>Download Link</h2>
 
+<h2>Your code is:<br>{{ content }}</h2>
 <div class="container">
-    <h2>Your code is:<br>{{ content }}</h2>
     <input id="text_input" class="text_input" type="text" value="{{content}}" readonly>
     <button class="btn" id="btn"><img src="{{ url_for('static', filename='img/clipboard-outline.svg') }}"></button>
-    <h2>Link to download:</h2>
-    <input id="text_input" class="text_input" type="text" value="https://send.andreyap.com/receive/{{content}}" readonly>
-    <button class="btn" id="btn"><img src="{{ url_for('static', filename='img/clipboard-outline.svg') }}"></button>
+</div>
+<h2>Link to download:</h2>
+<div class="container">
+    <input id="text_input2" class="text_input" type="text" value="https://send.andreyap.com/receive/{{content}}" readonly>
+    <button class="btn" id="btn2"><img src="{{ url_for('static', filename='img/clipboard-outline.svg') }}"></button>
 </div>
 
+<p class="txtcenter">Please do not abuse!! :(</p>
+<p class="txtcenter copy">Created by <a href="https://andreyap.com" target="_blank">Andre</a><br /><a href="mailto:andre@andreyap.com">Contact Me</a><br>Files will be hosted for 3 days before being automatically deleted.</p>
 <script src="{{ url_for('static', filename='js/linkscript.js') }}"></script>
 </html>

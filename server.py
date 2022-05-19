@@ -1,3 +1,4 @@
+from fileinput import filename
 import os, hashlib
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
@@ -34,19 +35,23 @@ def upload_file():
 
     return render_template("upload.html")
 
+@app.route('/receive')
 @app.route('/receive/<file>', methods=["GET", "POST"])
 def receive_file(file=""):
     if request.method == "POST":
         try:
             fileCode = request.form.get("fileCode")
-            if fileName := checkFile(fileCode) == "":
+            fileName = checkFile(fileCode)
+            if fileName == "":
                 return redirect(request.url)
             return render_template("download.html", content=fileName)
         except:
             return redirect(request.url)
     if file != "":
-        if fileName := checkFile(file) == "":
+        fileName = checkFile(file)
+        if fileName == "":
             return redirect(request.url)
+        print(fileName)
         return render_template("download.html", content=fileName)
     else:
         return render_template("receive.html")
@@ -57,6 +62,7 @@ def checkFile(fileCode):
         for i in files:
             fileSha1 = hashlib.sha1(i.encode('utf-8'))
             if fileSha1.hexdigest()[:8] == fileCode:
+                print(i)
                 return i        
         return ""
     return ""
