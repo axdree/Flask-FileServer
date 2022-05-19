@@ -35,12 +35,13 @@ def upload_file():
 
     return render_template("upload.html")
 
-@app.route('/receive')
-@app.route('/receive/<file>', methods=["GET", "POST"])
+@app.route('/receive', methods=["GET", "POST"])
+@app.route('/receive/<file>', methods=["GET"])
 def receive_file(file=""):
     if request.method == "POST":
         try:
             fileCode = request.form.get("fileCode")
+            print(fileCode)
             fileName = checkFile(fileCode)
             if fileName == "":
                 return redirect(request.url)
