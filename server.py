@@ -58,6 +58,10 @@ def receive_file(file=""):
 
 def checkFile(fileCode):
     if len(fileCode) == 8:
+        try:
+            int(fileCode, 16)
+        except:
+            return ""
         files = os.listdir(CONTAINER)
         for i in files:
             fileSha1 = hashlib.sha1(i.encode('utf-8'))
