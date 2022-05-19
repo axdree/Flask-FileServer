@@ -51,7 +51,6 @@ def receive_file(file=""):
         fileName = checkFile(file)
         if fileName == "":
             return redirect(request.url)
-        print(fileName)
         return render_template("download.html", content=fileName)
     else:
         return render_template("receive.html")
@@ -62,7 +61,6 @@ def checkFile(fileCode):
         for i in files:
             fileSha1 = hashlib.sha1(i.encode('utf-8'))
             if fileSha1.hexdigest()[:8] == fileCode:
-                print(i)
                 return i        
         return ""
     return ""
