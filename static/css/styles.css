@@ -30,7 +30,6 @@
     cursor: pointer;
     border: rgba(0, 0, 0, 0);
 }
-
 .js .input-file:hover + .input-file-trigger,
 .js .input-file:focus + .input-file-trigger,
 .js .input-file-trigger:hover,

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/linkstyles.css') }}">
+
+<h1>Enter Code Here:</h1>
+
+<div class="container">
+    <form method="post" enctype="text/plain">
+        <input type="text" id="fileCode" maxlength="8" placeholder="Enter Code Here..." name="fileCode">
+        <input class="upload-code" type="submit" value="Upload">
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/linkscript.js') }}"></script>
+</html>

@@ -39,7 +39,11 @@ input {
 input:focus {
     border: 1px solid royalblue;
 }
-.btn {
+a.btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
     background-color: royalblue;
     border: none;
     cursor: pointer;

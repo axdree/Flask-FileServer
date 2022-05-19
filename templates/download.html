@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/downloadstyles.css') }}">
+
+<h1>Download Link</h1>
+
+<div class="container">
+    <h2>File:</h2>
+    <h3>{{content}}</h3>
+    <a href="https://andrestore.blob.core.windows.net/storage/{{content}}" class="btn">Click to download</a>
+</div>
+
+<script src="{{ url_for('static', filename='js/linkscript.js') }}"></script>
+</html>
