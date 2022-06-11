@@ -1,6 +1,5 @@
-from fileinput import filename
 import os, hashlib
-from flask import Flask, flash, request, redirect, render_template
+from flask import Flask, flash, request, redirect, render_template, abort
 from werkzeug.utils import secure_filename
 
 CONTAINER = "../storageContainer/"
@@ -15,11 +14,11 @@ def upload_file():
         try:
             if 'file' not in request.files:
                 flash('No file part')
-                return redirect(request.url)
+                return "err"
             file = request.files['file']
             if file.filename == '':
                 flash('No selected file')
-                return redirect(request.url)
+                return "err"
             if file:
                 filename = secure_filename(file.filename)
                 dirSize = sum(os.path.getsize(f) for f in os.listdir('.') if os.path.isfile(f))
@@ -27,13 +26,20 @@ def upload_file():
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                     fileSha1 = hashlib.sha1(filename.encode('utf-8'))
                     fileCode = fileSha1.hexdigest()[:8]
-                    return render_template("link.html", content=fileCode)
+                    return fileCode# return render_template("link.html", content=fileCode)
                 else:
-                    return redirect(request.url)
-        except:
-            return redirect(request.url)
+                    return "err"
+        except Exception as e:
+            return "err"
 
     return render_template("upload.html")
+
+@app.route('/link', methods=["GET"])
+def linkGen():
+    code = request.args.get("code")
+    if code.isalnum() and len(code) == 8:
+        return render_template("link.html", content=code)
+    return redirect("/")
 
 @app.route('/receive', methods=["GET", "POST"])
 @app.route('/receive/<file>', methods=["GET"])
