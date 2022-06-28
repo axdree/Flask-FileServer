@@ -50,10 +50,10 @@ def receive_file(file=""):
             print(fileCode)
             fileName = checkFile(fileCode)
             if fileName == "":
-                return redirect(request.url)
+                return redirect("/")
             return render_template("download.html", content=fileName)
         except:
-            return redirect(request.url)
+            return redirect("/")
     if file != "":
         fileName = checkFile(file)
         if fileName == "":
