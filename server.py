@@ -1,5 +1,5 @@
 import os, hashlib
-from flask import Flask, flash, request, redirect, render_template, abort
+from flask import Flask, flash, request, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
 CONTAINER = "../storageContainer/"
@@ -50,14 +50,14 @@ def receive_file(file=""):
             print(fileCode)
             fileName = checkFile(fileCode)
             if fileName == "":
-                return redirect("/")
+                return redirect(url_for('upload_file'))
             return render_template("download.html", content=fileName)
         except:
             return redirect("/")
     if file != "":
         fileName = checkFile(file)
         if fileName == "":
-            return redirect(request.url)
+            return redirect(url_for('upload_file'))
         return render_template("download.html", content=fileName)
     else:
         return render_template("receive.html")
