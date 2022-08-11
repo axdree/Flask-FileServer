@@ -37,8 +37,11 @@ def upload_file():
 @app.route('/link', methods=["GET"])
 def linkGen():
     code = request.args.get("code")
-    if code.isalnum() and len(code) == 8:
-        return render_template("link.html", content=code)
+    try:
+        if code.isalnum() and len(code) == 8:
+            return render_template("link.html", content=code)
+    except:
+        return ""
     return redirect("/")
 
 @app.route('/receive', methods=["GET", "POST"])
