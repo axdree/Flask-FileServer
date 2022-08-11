@@ -41,7 +41,7 @@ def linkGen():
         if code.isalnum() and len(code) == 8:
             return render_template("link.html", content=code)
     except:
-        return ""
+        return redirect("/")
     return redirect("/")
 
 @app.route('/receive', methods=["GET", "POST"])
