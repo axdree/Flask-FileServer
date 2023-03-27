@@ -20,7 +20,7 @@ $(document).ready(function() {
             processData: false,
             success: function(data) {
                 var alphaN = /^[a-zA-Z0-9]+$/;
-                if(data != "err" && alphaN.test(data) && data.length == 8){
+                if(data != "err" && alphaN.test(data) && data.length == 6){
                     window.location.href=`/link?code=${data}`;
                 }else{
                     window.location.href="/";
