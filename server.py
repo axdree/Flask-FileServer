@@ -66,7 +66,7 @@ def receive_file(file=""):
         return render_template("receive.html")
 
 def checkFile(fileCode):
-    if len(fileCode) == 8:
+    if len(fileCode) == 6:
         try:
             int(fileCode, 16)
         except:
