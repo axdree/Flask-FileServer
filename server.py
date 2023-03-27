@@ -25,7 +25,7 @@ def upload_file():
                 if dirSize < 50 * 1000 * 1000 * 1000:
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                     fileSha1 = hashlib.sha1(filename.encode('utf-8'))
-                    fileCode = fileSha1.hexdigest()[:8]
+                    fileCode = fileSha1.hexdigest()[:6]
                     return fileCode# return render_template("link.html", content=fileCode)
                 else:
                     return "err"
@@ -38,7 +38,7 @@ def upload_file():
 def linkGen():
     code = request.args.get("code")
     try:
-        if code.isalnum() and len(code) == 8:
+        if code.isalnum() and len(code) == 6:
             return render_template("link.html", content=code)
     except:
         return redirect("/")
@@ -74,7 +74,7 @@ def checkFile(fileCode):
         files = os.listdir(CONTAINER)
         for i in files:
             fileSha1 = hashlib.sha1(i.encode('utf-8'))
-            if fileSha1.hexdigest()[:8] == fileCode:
+            if fileSha1.hexdigest()[:6] == fileCode:
                 return i        
         return ""
     return ""
